@@ -5,7 +5,7 @@
  * Updates to this file will affect all pages.
  */
 
-class getWebsiteInfo {
+class GetWebsiteInfo {
     public static $title = '4rum'; // SITE NAME (shown in tabs, search engines etc.)
 
     // Constructor values

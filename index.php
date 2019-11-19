@@ -2,23 +2,22 @@
 
 session_start();
 
-if(!$_SESSION['logged_in']){
-    header('Location: '.'login.php');
-} else {
-    ?>Logged in!<?php
-}
-
 // All dependencies
 require 'dbconn.php';
 
 // Load classes automatically
 require 'autoload.php';
 
-// Variables
-$css = new getWebsiteInfo('css', 'style');
-$js = new getWebsiteInfo('js', 'script');
+// Load user data!
+require 'getuser.php';
 
-// Content
+// Variables
+$css = new GetWebsiteInfo('css', 'style');
+$js = new GetWebsiteInfo('js', 'script');
+
+if(empty($_SESSION['logged_in'])){
+    header('Location: '.'login.php');
+} else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,9 +27,16 @@ $js = new getWebsiteInfo('js', 'script');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="<?php echo $css->cssPath; ?>">
     <script href="<?php echo $js->jsPath ?>"></script>
-    <title><?php echo getWebsiteInfo::$title ?></title>
+    <title><?php echo GetWebsiteInfo::$title ?></title>
 </head>
 <body>
-    
+    <header>
+        <h1>4rum</h1>
+        <span>Hey, <?php echo $currentuser->forename ?>!</span>
+    </header>
+    <main></main>
+    <footer></footer>
 </body>
 </html>
+<?php
+}
