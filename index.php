@@ -21,20 +21,28 @@ if(empty($_SESSION['logged_in'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="<?php echo $css->cssPath; ?>">
-    <script href="<?php echo $js->jsPath ?>"></script>
-    <title><?php echo GetWebsiteInfo::$title ?></title>
-</head>
+    <?php include_once 'HTML/head.html.php' ?>
 <body>
     <header>
         <h1>4rum</h1>
-        <span>Hey, <?php echo $currentuser->forename ?>!</span>
+        <nav>
+            <ul>
+                <li>Profile</li>
+                <li>Settings</li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
     </header>
-    <main></main>
+    <main>
+        <h2>Profile</h2>
+        <p>Hey, <?php echo $currentuser->forename . ' ' . $currentuser->surname ?>! Welcome to the forum.</p>
+        <ul id="profile">
+            <li>Name: <?php echo $currentuser->forename . ' ' . $currentuser->surname ?></li>
+            <li>User: <?php echo $currentuser->username ?></li>
+            <li>About: <?php echo $currentuser->bio ?></li>
+            <li>Email: <a href="mailto: <?php echo $currentuser->email ?>"><?php echo $currentuser->email ?></li>
+        </ul>
+    </main>
     <footer></footer>
 </body>
 </html>

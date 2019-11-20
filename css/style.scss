@@ -1,3 +1,68 @@
+// SASS Variables
+$purple: #8ac926;
+$dark: #1f4560;
+$light: #eeeeff;
+$pure-light: white;
+
 *{
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+h1,
+h2,
+h3{
+    font-family: 'Bebas Neue', cursive;
+}
+
+body,
+html{
+    margin: 0;
+    background-color: rgb(19, 19, 19);
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "header" "main" "footer";
+}
+
+header{
+    h1,
+    h2,
+    h3{
+        margin: 0;
+    }
+
+    height: 70px;
+    padding: 1rem;
+
+    background-color: $purple;
+
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul{
+        list-style: none;
+        padding: 0;
+        > *{
+            display: inline-block;
+            margin: 0 1rem;
+        }
+    }
+}
+
+main{
+    grid-area: main;
+    max-width: 1200px;
+    margin: 0 1rem;
+    padding: 1rem 0;
+}
+
+footer{
+    grid-area: footer;
 }

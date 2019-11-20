@@ -10,17 +10,21 @@ class User {
     public $forename;
     public $surname;
     public $bio;
+    public $email;
 
     /**
      * un = username
      * fn = forename
      * sn = surname
+     * b = bio
+     * e = email
      */
-    public function __construct($un, $fn, $sn, $b){
+    public function __construct($un, $fn, $sn, $b, $e){
         $this->username = $un;
         $this->forename = $fn;
         $this->surname = $sn;
         $this->bio = $b;
+        $this->email = $e;
     }
 }
 
@@ -29,6 +33,7 @@ if(!empty($_SESSION['logged_in'])){
         $_SESSION['logged_in']['username'],
         $_SESSION['logged_in']['forename'],
         $_SESSION['logged_in']['surname'],
-        $_SESSION['logged_in']['bio']
+        $_SESSION['logged_in']['bio'],
+        $_SESSION['logged_in']['email']
     );
 }

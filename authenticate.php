@@ -19,5 +19,6 @@ if(mysqli_num_rows($query) > 0){
     $_SESSION['logged_in'] = $result;
     header('Location: '.'index.php');
 } else {
-    echo 'Unable to log in m80. Did you fill in all of the fields correctly?';
+    echo 'Unable to log in m80. Did you fill in all of the fields correctly?<br>';
+    echo '<a href="index.php">Go back</a>';
 }
