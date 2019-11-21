@@ -11,6 +11,7 @@ class User {
     public $surname;
     public $bio;
     public $email;
+    public $loggedin;
 
     /**
      * un = username
@@ -25,6 +26,7 @@ class User {
         $this->surname = $sn;
         $this->bio = $b;
         $this->email = $e;
+        $this->loggedin = true;
     }
 }
 

@@ -2,6 +2,7 @@
 
 session_start();
 
-$_SESSION['logged_in'] = null;
+unset($_SESSION['logged_in']);
+unset($User);
 
 header('Location: '.'index.php');
