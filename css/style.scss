@@ -111,7 +111,7 @@ main{
             width: 45px;
         }
 
-        input{
+        input, button{
             margin: .5rem 0;
             padding: .5rem;
             border: 0;
@@ -126,6 +126,11 @@ main{
                 margin-top: 3rem;
             }
         }
+        [type="file"]{
+            background-color: transparent;
+            color: white;
+            background-color: transparent;
+        }
         label{
             display: block;
             margin-top: 1rem;
@@ -138,4 +143,50 @@ main{
 
 footer{
     grid-area: footer;
+}
+
+/*
+Profile styles
+*/
+
+#profile-banner{
+    height: 100%;
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin-bottom: 75px;
+}
+
+#profile-picture{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 9999px;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: 350px;
+    border: 3px solid $pure-light;
+}
+
+#profile-container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    #bio{
+        border: 3px solid $green;
+        padding: 1rem;
+        h2{
+            margin-top: 0;
+        }
+        blockquote{
+            font-style: italic;
+            margin: 40px 20px;
+            &::before{
+                content: '"';
+            }
+            &::after{
+                content: '"';
+            }
+        }
+    }
 }

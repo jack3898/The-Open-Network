@@ -6,7 +6,7 @@
  */
 
 class GetWebsiteInfo {
-    public static $title = '4rum'; // SITE NAME (shown in tabs, search engines etc.)
+    public static $title = 'Forum'; // SITE NAME (shown in tabs, search engines etc.)
 
     // Constructor values
     public $cssPath;

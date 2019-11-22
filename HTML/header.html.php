@@ -3,7 +3,8 @@
     <nav>
         <ul>
         <?php if(isset($currentuser->loggedin)){ ?>
-            <li>Profile</li>
+            <li><a href="../forum">Posts</a></li>
+            <li><a href="../forum/profile.php?user=<?php echo $currentuser->username ?>">Profile</a></li>
             <li>Settings</li>
             <li><a href="logout.php">Logout</a></li>
         <?php } ?>

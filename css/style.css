@@ -112,7 +112,7 @@ main form::after {
   width: 45px;
 }
 
-main form input {
+main form input, main form button {
   margin: .5rem 0;
   padding: .5rem;
   border: 0;
@@ -121,10 +121,16 @@ main form input {
   color: black;
 }
 
-main form input[type="submit"] {
+main form input[type="submit"], main form button[type="submit"] {
   cursor: pointer;
   min-width: 70px;
   margin-top: 3rem;
+}
+
+main form [type="file"] {
+  background-color: transparent;
+  color: white;
+  background-color: transparent;
 }
 
 main form label {
@@ -140,5 +146,58 @@ footer {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: footer;
+}
+
+/*
+Profile styles
+*/
+#profile-banner {
+  height: 100%;
+  width: 100%;
+  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 75px;
+}
+
+#profile-picture {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 9999px;
+  position: absolute;
+  left: calc(50% - 100px);
+  top: 350px;
+  border: 3px solid white;
+}
+
+#profile-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+}
+
+#profile-container #bio {
+  border: 3px solid #8ac926;
+  padding: 1rem;
+}
+
+#profile-container #bio h2 {
+  margin-top: 0;
+}
+
+#profile-container #bio blockquote {
+  font-style: italic;
+  margin: 40px 20px;
+}
+
+#profile-container #bio blockquote::before {
+  content: '"';
+}
+
+#profile-container #bio blockquote::after {
+  content: '"';
 }
 /*# sourceMappingURL=style.css.map */
