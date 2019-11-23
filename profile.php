@@ -1,5 +1,7 @@
 <?php
 
+include_once 'dbconn.php';
+
 include_once 'HTML/head.html.php';
 
 if(empty($_SESSION['logged_in'])){
@@ -64,8 +66,16 @@ $profileuser = new User(
         </div>
         <?php if($currentuser->username === $profileuser->username){
             ?>
-            <h2>Customise</h2>
+            <h2>Customise your profile!</h2>
                 <div id="customize-profile">
+                    <form method="POST" class="work-in-progress"> <!-- Needs action -->
+                        <label>First name</label>
+                        <input type="text">
+                        <label>Last name</label>
+                        <input type="text">
+                        <button type="submit">Update</button>
+                        <p>Note: You cannot change your email or password yet.</p>
+                    </form>
                     <form action="upload.php" method="POST" enctype="multipart/form-data">
                         <label>Profile picture</label>
                         <input type="file" name="file">
