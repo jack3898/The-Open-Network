@@ -1,7 +1,5 @@
 <?php
 
-include_once 'dbconn.php';
-
 include_once 'HTML/head.html.php';
 
 if(empty($_SESSION['logged_in'])){
@@ -10,28 +8,34 @@ if(empty($_SESSION['logged_in'])){
 
 include_once 'HTML/header.html.php';
 
-$user = $_GET['user'];
+class GetUser extends dbconn{
+    public $result;
 
-$sql = "SELECT * FROM `users` WHERE `username` = '$user'";
+    function __construct($un){
+        $sql = "SELECT * FROM `users` WHERE `username` = '$un'";
 
-$query = mysqli_query($conn, $sql);
+        $query = mysqli_query($this->connect(), $sql);
 
-if(mysqli_num_rows($query) > 0){
-    $result = mysqli_fetch_array($query);
-} else {
-    echo 'Invalid user!<br>';
-    echo '<a href="index.php">Go home</a>';
-    die;
+        if(mysqli_num_rows($query) > 0){
+            $this->result = mysqli_fetch_array($query);
+        } else {
+            echo 'Invalid user!<br>';
+            echo '<a href="index.php">Go home</a>';
+            die;
+        }
+    }
 }
 
+$publicuser = new GetUser($_GET['user']);
+
 $profileuser = new User(
-    $result['username'],
-    $result['forename'],
-    $result['surname'],
-    $result['bio'],
-    $result['email'],
-    $result['profilepicurl'],
-    $result['bannerpicurl'],
+    $publicuser->result['username'],
+    $publicuser->result['forename'],
+    $publicuser->result['surname'],
+    $publicuser->result['bio'],
+    $publicuser->result['email'],
+    $publicuser->result['profilepicurl'],
+    $publicuser->result['bannerpicurl'],
     true
 );
 

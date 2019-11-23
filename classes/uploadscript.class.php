@@ -1,7 +1,7 @@
 <?php
 
-class UploadScript{
-    public static function initiateUpload($type, $currentuser, $conn, $directory, $dbcol){
+class UploadScript extends dbconn{
+    public static function initiateUpload($type, $currentuser, $directory, $dbcol){
         $filename = $_FILES[$type]['name'];
         $filetype = $_FILES[$type]['type'];
         $filetmp = $_FILES[$type]['tmp_name'];
@@ -14,6 +14,15 @@ class UploadScript{
 
         $allowedfiles = array('jpg', 'png', 'jpeg');
 
+        function connect(){
+            $location = 'localhost';
+            $username = 'root';
+            $password = '';
+            $database = '4rum';
+
+            return $conn = mysqli_connect($location, $username, $password, $database);
+        }
+
         if(in_array($fileactualextension, $allowedfiles)){
             if($fileerror === 0){
                 if($filesize < 5000000){
@@ -22,13 +31,13 @@ class UploadScript{
                     $filedestination = $directory . $newfilename;
 
                     $sqli_del_pp = "SELECT $dbcol FROM `users` WHERE username = '$currentuser'";
-                    $del = mysqli_query($conn, $sqli_del_pp);
+                    $del = mysqli_query(connect(), $sqli_del_pp);
                     $del2 = end(mysqli_fetch_assoc($del));
     
                     unlink($directory . $del2);
                     $sqli_upload_pp = "UPDATE users SET $dbcol = '$newfilename' WHERE username = '$currentuser'";
     
-                    mysqli_query($conn, $sqli_upload_pp);
+                    mysqli_query(connect(), $sqli_upload_pp);
     
                     move_uploaded_file($filetmp, $filedestination);
                     header('Location: profile.php?user=' . $currentuser);

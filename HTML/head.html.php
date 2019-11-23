@@ -2,9 +2,6 @@
 
 session_start();
 
-// All dependencies
-require 'dbconn.php';
-
 // Load classes automatically
 require 'autoload.php';
 

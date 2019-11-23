@@ -3,7 +3,7 @@
 include_once 'HTML/head.html.php';
 
 if(empty($_SESSION['logged_in'])){
-    header('Location: '.'login.php');
+    header('Location: login.php');
 } else {
 
 include_once 'HTML/header.html.php';
