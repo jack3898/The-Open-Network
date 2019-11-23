@@ -13,6 +13,7 @@ class User {
     public $email;
     public $loggedin;
     public $profilepicurl;
+    public $profilebannerurl;
 
     /**
      * un = username
@@ -21,14 +22,16 @@ class User {
      * b = bio
      * e = email
      * pp = profile pic url
+     * pb = profile banner url
      */
-    public function __construct($un, $fn, $sn, $b, $e, $pp){
+    public function __construct($un, $fn, $sn, $b, $e, $pp, $pb){
         $this->username = $un;
         $this->forename = $fn;
         $this->surname = $sn;
         $this->bio = $b;
         $this->email = $e;
         $this->profilepicurl = $pp;
+        $this->profilebannerurl = $pb;
         $this->loggedin = true;
     }
 }

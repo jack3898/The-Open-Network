@@ -29,6 +29,7 @@ $profileuser = new User(
     $result['bio'],
     $result['email'],
     $result['profilepicurl'],
+    $result['bannerpicurl'],
     true
 );
 
@@ -36,8 +37,8 @@ $profileuser = new User(
 
 <body>
     <main>
-        <img id="profile-banner" src="https://source.unsplash.com/random">
-        <img id="profile-picture" src="<?php echo 'uploads/' . $profileuser->profilepicurl ?>">
+        <img id="profile-banner" src="<?php echo 'uploads/profilebanners/' . $profileuser->profilebannerurl ?>">
+        <img id="profile-picture" src="<?php echo 'uploads/profilepics/' . $profileuser->profilepicurl ?>">
         <h1 style="text-align: center"><?php echo $profileuser->forename . ' ' . $profileuser->surname ?></h1>
         <div id="profile-container">
             <div>
@@ -66,7 +67,7 @@ $profileuser = new User(
                     </form>
                     <form action="upload.php" method="POST" enctype="multipart/form-data">
                         <label>Profile banner</label>
-                        <input type="file" name="file">
+                        <input type="file" name="file_banner">
                         <button type="submit" name="submit">Upload</button>
                     </form>
                 </div>
