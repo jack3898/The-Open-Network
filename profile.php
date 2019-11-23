@@ -37,7 +37,13 @@ $profileuser = new User(
 
 <body>
     <main>
-        <img id="profile-banner" src="<?php echo 'uploads/profilebanners/' . $profileuser->profilebannerurl ?>">
+        <img id="profile-banner" src="<?php
+            if($profileuser->profilebannerurl){
+                echo 'uploads/profilebanners/' . $profileuser->profilebannerurl;
+            } else {
+                echo 'resources/bannerpicokaceholder.svg';
+            }
+            ?>">
         <img id="profile-picture" src="<?php echo 'uploads/profilepics/' . $profileuser->profilepicurl ?>">
         <h1 style="text-align: center"><?php echo $profileuser->forename . ' ' . $profileuser->surname ?></h1>
         <div id="profile-container">
