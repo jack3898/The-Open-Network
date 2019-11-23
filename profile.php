@@ -58,11 +58,18 @@ $profileuser = new User(
         <?php if($currentuser->username === $profileuser->username){
             ?>
             <h2>Customise</h2>
-                <form action="upload.php" method="POST" enctype="multipart/form-data">
-                    <label>Profile picture</label>
-                    <input type="file" name="file">
-                    <button type="submit" name="submit">Upload</button>
-                </form>
+                <div id="customize-profile">
+                    <form action="upload.php" method="POST" enctype="multipart/form-data">
+                        <label>Profile picture</label>
+                        <input type="file" name="file">
+                        <button type="submit" name="submit">Upload</button>
+                    </form>
+                    <form action="upload.php" method="POST" enctype="multipart/form-data">
+                        <label>Profile banner</label>
+                        <input type="file" name="file">
+                        <button type="submit" name="submit">Upload</button>
+                    </form>
+                </div>
             <?php
         } ?>
     </main>

@@ -1,5 +1,5 @@
 <header>
-    <h1>4rum</h1>
+    <h1><?php echo GetWebsiteInfo::$title ?></h1>
     <nav>
         <ul>
         <?php if(isset($currentuser->loggedin)){ ?>

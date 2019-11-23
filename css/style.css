@@ -90,6 +90,7 @@ main form {
   border-left: 3px solid #8ac926;
   position: relative;
   padding: 1px 0 1rem 1rem;
+  margin: 1rem;
 }
 
 main form::before {
@@ -170,6 +171,8 @@ Profile styles
   left: calc(50% - 100px);
   top: 350px;
   border: 3px solid white;
+  background-image: url("../resources/profilepicplaceholder.svg");
+  color: #8ac926;
 }
 
 #profile-container {
@@ -199,5 +202,22 @@ Profile styles
 
 #profile-container #bio blockquote::after {
   content: '"';
+}
+
+#customize-profile {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#customize-profile > * {
+  max-width: 400px;
 }
 /*# sourceMappingURL=style.css.map */
