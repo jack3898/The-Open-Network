@@ -14,6 +14,8 @@ class User {
     public $loggedin;
     public $profilepicurl;
     public $profilebannerurl;
+    public $friends;
+    public $friendrequests;
 
     /**
      * un = username
@@ -23,8 +25,10 @@ class User {
      * e = email
      * pp = profile pic url
      * pb = profile banner url
+     * fr = friends
+     * frr = friend requests
      */
-    public function __construct($un, $fn, $sn, $b, $e, $pp, $pb){
+    public function __construct($un, $fn, $sn, $b, $e, $pp, $pb, $fr, $frr){
         $this->username = $un;
         $this->forename = $fn;
         $this->surname = $sn;
@@ -33,6 +37,8 @@ class User {
         $this->profilepicurl = $pp;
         $this->profilebannerurl = $pb;
         $this->loggedin = true;
+        $this->friends = $fr;
+        $this->friendrequests = $frr;
     }
 }
 
@@ -44,6 +50,8 @@ if(!empty($_SESSION['logged_in'])){
         $_SESSION['logged_in']['bio'],
         $_SESSION['logged_in']['email'],
         true,
-        null
+        null,
+        $_SESSION['logged_in']['friendids'],
+        $_SESSION['logged_in']['pendingfriends']
     );
 }

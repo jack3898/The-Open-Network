@@ -11,6 +11,9 @@ require 'getuser.php';
 // Variables
 $css = new GetWebsiteInfo('css', 'style');
 $js = new GetWebsiteInfo('js', 'notification-script');
+if(isset($currentuser->friendrequests)){
+    $notifications = json_decode($currentuser->friendrequests);
+}
 
 ?>
 <!DOCTYPE html>

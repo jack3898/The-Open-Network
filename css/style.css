@@ -66,6 +66,40 @@ header ul > * {
 }
 
 header #notifications {
+  position: relative;
+}
+
+header #notifications #notifications-box {
+  display: none;
+  min-height: 150px;
+  width: 200px;
+  background-color: #8ac926;
+  position: absolute;
+  right: 0;
+  top: 44px;
+}
+
+header #notifications #notifications-box h2 {
+  padding: .5rem 1rem;
+  background-color: black;
+}
+
+header #notifications #notifications-box li {
+  padding: 1rem 0;
+}
+
+header #notifications #notifications-box li button {
+  background-color: white;
+  color: black;
+  border: 0;
+  cursor: pointer;
+}
+
+header #notifications #notifications-box li:not(:last-child) {
+  border-bottom: 1px solid white;
+}
+
+header #notifications .fas {
   cursor: pointer;
 }
 

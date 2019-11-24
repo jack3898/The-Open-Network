@@ -36,7 +36,8 @@ $profileuser = new User(
     $publicuser->result['email'],
     $publicuser->result['profilepicurl'],
     $publicuser->result['bannerpicurl'],
-    true
+    true,
+    false
 );
 
 ?>
