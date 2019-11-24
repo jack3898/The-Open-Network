@@ -60,6 +60,10 @@ header{
         }
     }
 
+    #notifications{
+        cursor: pointer;
+    }
+
     &::before{
         content: '';
         width: 100%;
@@ -150,6 +154,7 @@ footer{
     grid-area: footer;
     background-color: $pure-dark;
     min-height: 200px;
+    margin-top: 2rem;
     }
     #footer-container{
         width: 100%;

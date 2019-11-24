@@ -65,6 +65,10 @@ header ul > * {
   margin: 0 1rem;
 }
 
+header #notifications {
+  cursor: pointer;
+}
+
 header::before {
   content: '';
   width: 100%;
@@ -153,6 +157,7 @@ footer {
   grid-area: footer;
   background-color: black;
   min-height: 200px;
+  margin-top: 2rem;
 }
 
 #footer-container {

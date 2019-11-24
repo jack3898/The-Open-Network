@@ -7,7 +7,7 @@
         </section>
         <section>
             <h3>Made by</h3>
-            <p><a href="profile.php?user=jackwright3898">Jack</a></p>
+            <p><a href="profile.php?user=jackwright3898">Jack Wright</a></p>
         </section>
         <section>
             <h3>Contact</h3>
