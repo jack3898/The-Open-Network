@@ -15,6 +15,6 @@ include_once 'HTML/header.html.php';
         <h2>Posts for <?php echo $currentuser->forename ?>:</h2>
         
     </main>
-    <footer></footer>
+    <?php include 'HTML/footer.html.php'; ?>
 </body>
 </html><?php }

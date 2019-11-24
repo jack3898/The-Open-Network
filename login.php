@@ -13,6 +13,7 @@ include_once 'HTML/header.html.php';
     <input type="password" name="password" placeholder="Password">
     <input type="submit" value="Login">
 </form>
-<main>
+</main>
+<?php include 'HTML/footer.html.php'; ?>
 </body>
 </html>

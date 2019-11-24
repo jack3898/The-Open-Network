@@ -94,6 +94,6 @@ $profileuser = new User(
             <?php
         } ?>
     </main>
-    <footer></footer>
+    <?php include 'HTML/footer.html.php'; ?>
 </body>
 </html><?php }
