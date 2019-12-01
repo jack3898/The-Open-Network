@@ -1,5 +1,6 @@
 <?php
 // Database connection configuration
+// This class is usually referenced as an extension to other classes that need to connect to the database.
 
 class dbconn{
     private $location; // Server

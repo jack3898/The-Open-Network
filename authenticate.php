@@ -8,6 +8,8 @@ class Auth extends dbconn{
     function __construct($un, $pw){
         // Query template
         $sql = "SELECT * FROM users WHERE username=? AND password=?;";
+        // $sql_getpendingrequests = "SELECT users.username, users.forename, users.surname, pendingfriends.pendingfriend FROM pendingfriends JOIN users ON users.? = pendingfriends.username;";
+        //SELECT users.username, users.forename, users.surname, pendingfriends.pendingfriend FROM pendingfriends JOIN users ON users.username = pendingfriends.username 
 
         // Get the connection details of the database
         $conn = $this->connect();
@@ -16,7 +18,7 @@ class Auth extends dbconn{
         $stmt = mysqli_stmt_init($conn);
 
         // Prepare the initialised statement for execution
-        if(!mysqli_stmt_prepare($stmt, $sql)){
+        if(!mysqli_stmt_prepare($stmt, $sql) && mysqli_stmt_prepare($stmt_pendingfriends)){
             // If failed to prapare the initialised statement
             echo 'Error with SQL statement.';
         } else {

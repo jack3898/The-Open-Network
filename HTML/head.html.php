@@ -1,12 +1,14 @@
 <?php
 
-session_start();
-
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
 // Load classes automatically
 require 'autoload.php';
 
 // Load user data!
 require 'getuser.php';
+require 'pendingfriends.php';
 
 // Variables
 $css = new GetWebsiteInfo('css', 'style');
