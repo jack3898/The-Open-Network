@@ -8,7 +8,7 @@ class dbconn{
     private $password; // DB password
     private $database; // DB to select
 
-    public function connect(){
+    protected function connect(){
         $this->location = 'localhost';
         $this->username = 'root';
         $this->password = '';
