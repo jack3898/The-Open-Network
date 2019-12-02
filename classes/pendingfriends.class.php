@@ -1,9 +1,4 @@
 <?php
-
-if(session_status() == PHP_SESSION_NONE){
-    session_start();
-}
-
 // This PHP file gathers all the associated pending friend requests for the logged in user.
 // The logged in user is found via the variable "$currentuser" which is created in head.html.php.
 
