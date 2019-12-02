@@ -8,24 +8,6 @@ if(empty($_SESSION['logged_in'])){
 
 include_once 'HTML/header.html.php';
 
-class GetUser extends dbconn{
-    public $result;
-
-    function __construct($un){
-        $sql = "SELECT * FROM `users` WHERE `username` = '$un'";
-
-        $query = mysqli_query($this->connect(), $sql);
-
-        if(mysqli_num_rows($query) > 0){
-            $this->result = mysqli_fetch_array($query);
-        } else {
-            echo 'Invalid user!<br>';
-            echo '<a href="index.php">Go home</a>';
-            die;
-        }
-    }
-}
-
 $publicuser = new GetUser($_GET['user']);
 
 $profileuser = new User(
@@ -61,6 +43,11 @@ $profileuser = new User(
                     <li>User: <?php echo $profileuser->username ?></li>
                     <li>Email: <a href="mailto: <?php echo $profileuser->email ?>"><?php echo $profileuser->email ?></a></li>
                 </ul>
+                <?php if(!viewing_own_profile()){ ?>
+                <form class="plain">
+                    <button>Add <?php echo $profileuser->forename ?> as a friend!</button>
+                </form>
+                <?php } ?>
             </div>
             <div>
                 <div id="bio">
@@ -69,7 +56,7 @@ $profileuser = new User(
                 </div>
             </div>
         </div>
-        <?php if($currentuser->username === $profileuser->username){
+        <?php if(viewing_own_profile()){
             ?>
             <h2>Customise your profile!</h2>
                 <div id="customize-profile">

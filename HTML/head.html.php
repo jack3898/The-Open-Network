@@ -7,7 +7,6 @@ if(session_status() == PHP_SESSION_NONE){
 require 'autoload.php';
 
 // Load user data!
-require 'getuser.php';
 require 'pendingfriends.php';
 
 // Create a variable with the current logged in user.
@@ -28,18 +27,28 @@ if(!empty($_SESSION['logged_in'])){
 // Filter the query results in the class to show only pending friend requests for the current user.
 if(isset($currentuser)){
     $pending_data = new PendingFriends($currentuser->username);
-    $pending_friends_unfiltered = $pending_data->result;
     $pending_friends = array();
-    foreach($pending_friends_unfiltered as $item){
+    $pending_friends_full = array();
+
+    foreach($pending_data->result as $item){
         array_push($pending_friends, $item['pendingfriend']);
+        array_push($pending_friends_full, $item);
     }
 }
 
 // Various variables.
 $css = new GetWebsiteInfo('css', 'style');
 $js = new GetWebsiteInfo('js', 'notification-script');
-if(isset($currentuser->friendrequests)){
-    $notifications = json_decode($currentuser->friendrequests);
+
+function viewing_own_profile(){
+    global $currentuser;
+    global $profileuser;
+
+    if($currentuser->username == $profileuser->username){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 ?>

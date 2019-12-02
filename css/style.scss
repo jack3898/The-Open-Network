@@ -118,11 +118,7 @@ main{
     padding: 0 1rem;
 
     form{
-        border-left: 3px solid $green;
-
         position: relative;
-
-        padding: 1px 1rem 1rem 1rem;
         margin: 1rem;
 
         @mixin form-pseudo{
@@ -136,15 +132,20 @@ main{
             background-color: $green;
         }
 
-        &::before{
-            @include form-pseudo;
-            top: 0;
-            width: 225px;
-        }
-        &::after{
-            @include form-pseudo;
-            bottom: 0;
-            width: 45px;
+        &:not(.plain){
+            border-left: 3px solid $green;
+            padding: 1px 1rem 1rem 1rem;
+    
+            &::before{
+                @include form-pseudo;
+                top: 0;
+                width: 225px;
+            }
+            &::after{
+                @include form-pseudo;
+                bottom: 0;
+                width: 45px;
+            }
         }
 
         input, button{
@@ -156,6 +157,8 @@ main{
 
             background-color: $pure-light;
             color: black;
+
+            cursor: pointer;
             &[type="submit"]{
                 cursor: pointer;
                 min-width: 70px;

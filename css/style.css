@@ -126,13 +126,16 @@ main {
 }
 
 main form {
-  border-left: 3px solid #8ac926;
   position: relative;
-  padding: 1px 1rem 1rem 1rem;
   margin: 1rem;
 }
 
-main form::before {
+main form:not(.plain) {
+  border-left: 3px solid #8ac926;
+  padding: 1px 1rem 1rem 1rem;
+}
+
+main form:not(.plain)::before {
   content: '';
   position: absolute;
   left: 0;
@@ -142,7 +145,7 @@ main form::before {
   width: 225px;
 }
 
-main form::after {
+main form:not(.plain)::after {
   content: '';
   position: absolute;
   left: 0;
@@ -159,6 +162,7 @@ main form input, main form button {
   display: block;
   background-color: white;
   color: black;
+  cursor: pointer;
 }
 
 main form input[type="submit"], main form button[type="submit"] {
