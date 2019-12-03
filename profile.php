@@ -8,19 +8,7 @@ if(empty($_SESSION['logged_in'])){
 
 include_once 'HTML/header.html.php';
 
-$publicuser = new GetUser($_GET['user']);
-
-$profileuser = new User(
-    $publicuser->result['username'],
-    $publicuser->result['forename'],
-    $publicuser->result['surname'],
-    $publicuser->result['bio'],
-    $publicuser->result['email'],
-    $publicuser->result['profilepicurl'],
-    $publicuser->result['bannerpicurl'],
-    true,
-    false
-);
+include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
 
 ?>
 
