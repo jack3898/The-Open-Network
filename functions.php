@@ -35,7 +35,7 @@ if(isset($currentuser)){
 
 // Various variables.
 $css = new GetWebsiteInfo('css', 'style');
-$js = new GetWebsiteInfo('js', 'notification-script');
+$js = new GetWebsiteInfo('js', 'scripts');
 
 function viewing_own_profile(){
     global $currentuser;

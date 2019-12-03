@@ -44,7 +44,7 @@ $profileuser = new User(
                     <li>Email: <a href="mailto: <?php echo $profileuser->email ?>"><?php echo $profileuser->email ?></a></li>
                 </ul>
                 <?php if(!viewing_own_profile()){ ?>
-                <form class="plain">
+                <form class="plain" id="add_friend">
                     <button>Add <?php echo $profileuser->forename ?> as a friend!</button>
                 </form>
                 <?php } ?>

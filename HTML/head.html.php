@@ -12,6 +12,7 @@ require_once('functions.php');
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="<?php echo $css->cssPath; ?>">
     <script src="<?php echo $js->jsPath ?>" defer></script>
+    <script src="api.php" defer></script>
     <script src="https://kit.fontawesome.com/4304024161.js" crossorigin="anonymous"></script>
     <title><?php echo GetWebsiteInfo::$title ?></title>
 </head>
