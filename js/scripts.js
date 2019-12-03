@@ -31,9 +31,12 @@ let declineFrnd = get('queryAll', '.friend-decline');
 if(get('id', 'add_friend') !== null){
     const addFriend = get('id', 'add_friend'); // Add [user] as a friend btn on profiles
 
-    addFriend.addEventListener('click', function(e) {
-        
-    });
+    // addFriend.addEventListener('click', function(e) {
+    //     // Get logged in user details
+    //     xhr = new XMLHttpRequest();
+
+    //     xhr.open('GET', 'api.php?user=currentuser');
+    // });
 }
 
 let toggle = false;
@@ -49,4 +52,3 @@ bell.addEventListener('click', () => {
 
     toggle = !toggle;
 });
-
