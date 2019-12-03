@@ -8,10 +8,18 @@ if(isset($_GET['type'])){
     require_once 'reusable/getprofileuser.php'; // Get the details of that user's profile.
 
     $type = $_GET['type'];
-    $username = $_GET['user'];
+
+    if(isset($_GET['user'])){
+        $username = $_GET['user'];
+    }
+    
 
     if($type === 'currentuser'){
-        echo(json_encode($currentuser));
+        if(isset($currentuser)){
+            echo(json_encode($currentuser));
+        } else {
+            echo '["You are not logged in!"]';
+        }
     } else if($type === 'profileuser' && isset($username)){
         $profileuser_filtered = array(
             'forename' => $profileuser->forename,
