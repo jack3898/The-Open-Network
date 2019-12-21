@@ -21,8 +21,6 @@ class PendingFriends extends dbconn{
                 $rows[] = $row;
             }
             $this->result = $rows;
-        } else {
-            echo 'Unable to get pending friends.';
         }
     }
 }
