@@ -1,10 +1,13 @@
 <?php
-// Please ignore this as a working file. This is not currently used and is in need of renovation.
-
-header('Content-type: text/plain');
 
 include_once 'HTML/head.html.php';
 
-$user = $_POST['user'];
+$action = $_POST['friend_action']; // The form sends either 'true' or 'false'. True meaning accept the request.
 
-$accept = new AcceptFriend($currentuser->username, $user);
+$handleRequest = new FriendReqHandler($action);
+
+if($action){
+    
+} else if(!$action){
+
+}

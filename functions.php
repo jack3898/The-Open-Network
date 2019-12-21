@@ -15,9 +15,7 @@ if(!empty($_SESSION['logged_in'])){
         $_SESSION['logged_in']['bio'],
         $_SESSION['logged_in']['email'],
         true,
-        null,
-        $_SESSION['logged_in']['friendids'],
-        $_SESSION['logged_in']['pendingfriends']
+        null
     );
 }
 

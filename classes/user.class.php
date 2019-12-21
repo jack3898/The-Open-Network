@@ -28,7 +28,7 @@ class User {
      * fr = friends
      * frr = friend requests
      */
-    public function __construct($un, $fn, $sn, $b, $e, $pp, $pb, $fr, $frr){
+    public function __construct($un, $fn, $sn, $b, $e, $pp, $pb){
         $this->username = $un;
         $this->forename = $fn;
         $this->surname = $sn;
@@ -37,7 +37,5 @@ class User {
         $this->profilepicurl = $pp;
         $this->profilebannerurl = $pb;
         $this->loggedin = true;
-        $this->friends = $fr;
-        $this->friendrequests = $frr;
     }
 }

@@ -16,10 +16,13 @@
                             // Notifications comes from the $currentuser table, and is assigned in head.html.php
                             foreach($pending_friends as $notification){
                                 ?>
-                                    <li><a href="profile.php?user=<?php echo $notification ?>"><?php echo $notification ?></a> wants to add you as a friend!<br>
+                                    <li>
+                                    <form action="userrequestmgr.php" method="POST">
+                                        <a href="profile.php?user=<?php echo $notification ?>"><?php echo $notification ?></a> wants to add you as a friend!<br>
                                         <!-- Put form code here to accept or decline friend request. -->
-                                        <button class="friend-accept" name="<?php echo $notification ?>">Accept</button>
-                                        <button class="friend-decline" name="<?php echo $notification ?>">Decline</button>
+                                        <button class="friend-accept" name="friend_action" value="true,<?php echo $notification ?>">Accept</button>
+                                        <button class="friend-decline" name="friend_action" value="false,<?php echo $notification ?>">Decline</button>
+                                    </form>
                                     </li>
                                 <?php
                             }
