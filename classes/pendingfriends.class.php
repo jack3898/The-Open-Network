@@ -9,15 +9,7 @@ class PendingFriends extends dbconn{
         // There is a table with pending friends assigned to users.
         // The following query links the users table and the pendingfriends table.
         $sql =
-        "SELECT
-            users.username,
-            users.forename,
-            users.surname,
-            pendingfriends.pendingfriend
-        FROM pendingfriends
-        JOIN users
-        ON users.username = pendingfriends.username
-        WHERE users.username = '$un'";
+        "SELECT * FROM collate_pending_friends WHERE username = '$un'";
         
         $conn = $this->connect();
 
