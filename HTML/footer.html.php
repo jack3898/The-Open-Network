@@ -17,5 +17,10 @@
                 <li><a href="mailto:1998jwright@gmail.com">1998jwright@gmail.com</a></li>
             </ul>
         </section>
+        <section>
+            <h3>API</h3>
+            <a href="api.php?type=currentuser">View your profile in JSON</a><br />
+            <a href="api.php?type=profileuser&user=jackwright3898">View a user's details in JSON (change the username in the URL)</a>
+        </section>
     </div>
 </footer>

@@ -61,7 +61,37 @@ header{
     }
 
     #notifications{
-        cursor: pointer;
+        position: relative;
+
+        #notifications-box{
+            display: none;
+            min-height: 150px;
+            width: 200px;
+            background-color: $green;
+            position: absolute;
+            right: 0;
+            top: 44px;
+            h2{
+                padding: .5rem 1rem;
+                background-color: $pure-dark;
+            }
+            li{
+                padding: 1rem 0;
+
+                button{
+                    background-color: white;
+                    color: black;
+                    border: 0;
+                    cursor: pointer;
+                }
+                &:not(:last-child){
+                    border-bottom: 1px solid white;
+                }
+            }
+        }
+        .fas{
+            cursor: pointer;
+        }
     }
 
     &::before{
@@ -88,11 +118,7 @@ main{
     padding: 0 1rem;
 
     form{
-        border-left: 3px solid $green;
-
         position: relative;
-
-        padding: 1px 1rem 1rem 1rem;
         margin: 1rem;
 
         @mixin form-pseudo{
@@ -106,15 +132,20 @@ main{
             background-color: $green;
         }
 
-        &::before{
-            @include form-pseudo;
-            top: 0;
-            width: 225px;
-        }
-        &::after{
-            @include form-pseudo;
-            bottom: 0;
-            width: 45px;
+        &:not(.plain){
+            border-left: 3px solid $green;
+            padding: 1px 1rem 1rem 1rem;
+    
+            &::before{
+                @include form-pseudo;
+                top: 0;
+                width: 225px;
+            }
+            &::after{
+                @include form-pseudo;
+                bottom: 0;
+                width: 45px;
+            }
         }
 
         input, button{
@@ -126,6 +157,8 @@ main{
 
             background-color: $pure-light;
             color: black;
+
+            cursor: pointer;
             &[type="submit"]{
                 cursor: pointer;
                 min-width: 70px;
@@ -241,5 +274,16 @@ Profile styles
                 background-color: rgba(0, 0, 0, .5);
                 font-size: 150%;
             }
+    }
+}
+
+#friends{
+    .friend{
+        background-color: $pure-light;
+        padding: .5rem .7rem;
+        color: $pure-dark;
+        border-radius: 999px;
+        margin: 5px;
+        text-decoration: none;
     }
 }

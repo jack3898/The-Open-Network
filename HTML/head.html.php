@@ -1,16 +1,6 @@
 <?php
 
-session_start();
-
-// Load classes automatically
-require 'autoload.php';
-
-// Load user data!
-require 'getuser.php';
-
-// Variables
-$css = new GetWebsiteInfo('css', 'style');
-$js = new GetWebsiteInfo('js', 'notification-script');
+require_once('functions.php');
 
 ?>
 <!DOCTYPE html>
@@ -22,6 +12,7 @@ $js = new GetWebsiteInfo('js', 'notification-script');
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="<?php echo $css->cssPath; ?>">
     <script src="<?php echo $js->jsPath ?>" defer></script>
+    <script src="api.php" defer></script>
     <script src="https://kit.fontawesome.com/4304024161.js" crossorigin="anonymous"></script>
     <title><?php echo GetWebsiteInfo::$title ?></title>
 </head>

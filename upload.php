@@ -2,6 +2,12 @@
 
 include_once 'HTML/head.html.php';
 
+/*
+* This upload.php file is called when the users submits the form to upload a custom profile picture or
+* Banner from their profile page. These IF statements find which type they uploaded, before
+* using the UploadScript class to execute the upload.
+*/
+
 if(isset($_POST['submit'])){
     if(isset($_FILES['file']['name'])){
         UploadScript::initiateUpload(

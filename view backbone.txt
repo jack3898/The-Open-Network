@@ -1,0 +1,9 @@
+SELECT
+            users.username,
+            users.forename,
+            users.surname,
+            pendingfriends.pendingfriend
+        FROM pendingfriends
+        JOIN users
+        ON users.username = pendingfriends.username
+        WHERE users.username = '$un'

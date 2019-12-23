@@ -1,5 +1,6 @@
 <?php
 // Database connection configuration
+// This class is usually referenced as an extension to other classes that need to connect to the database.
 
 class dbconn{
     private $location; // Server
@@ -7,7 +8,7 @@ class dbconn{
     private $password; // DB password
     private $database; // DB to select
 
-    public function connect(){
+    protected function connect(){
         $this->location = 'localhost';
         $this->username = 'root';
         $this->password = '';
