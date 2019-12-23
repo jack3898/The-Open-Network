@@ -26,7 +26,7 @@ if(isset($currentuser)){
     $pending_friends_full = array();
 
     foreach($pending_data->result as $item){
-        array_push($pending_friends, $item['pendingfriend']);
+        array_push($pending_friends, $item['username']);
         array_push($pending_friends_full, $item);
     }
 }

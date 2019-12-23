@@ -11,7 +11,7 @@ class FriendReqHandler extends dbconn{
 
         $conn = $this->connect();
 
-        $del_req = "DELETE FROM `pendingfriends` WHERE `username` = '$currentuser->username' AND `pendingfriend` = '$result[1]'";
+        $del_req = "DELETE FROM `pendingfriends` WHERE `pendingfriend` = '$currentuser->username' AND `username` = '$result[1]'";
 
         $accept_the_request = "INSERT INTO `existingfriends`(`username`, `friends`) VALUES ('$currentuser->username', '$result[1]')";
 

@@ -8,8 +8,8 @@ class PendingFriends extends dbconn{
     function __construct($un){
         // There is a table with pending friends assigned to users.
         // The following query links the users table and the pendingfriends table.
-        $sql =
-        "SELECT * FROM collate_pending_friends WHERE username = '$un'";
+        // This class is actioned in functions.php
+        $sql = "SELECT * FROM collate_pending_friends WHERE username = '$un' OR pendingfriend = '$un'";
         
         $conn = $this->connect();
 

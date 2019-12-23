@@ -14,8 +14,9 @@
                     <ul>
                         <?php
                             // Notifications comes from the $currentuser table, and is assigned in head.html.php
-                            if($pending_friends){foreach($pending_friends as $notification){
-                                    ?>
+                            if($pending_friends){
+                                foreach($pending_friends as $notification){
+                                    if($notification != $currentuser->username){?>
                                         <li>
                                         <form action="userrequestmgr.php" method="POST">
                                             <a href="profile.php?user=<?php echo $notification ?>"><?php echo $notification ?></a> wants to add you as a friend!<br>
@@ -24,7 +25,7 @@
                                             <button class="friend-decline" name="friend_action" value="false,<?php echo $notification ?>">Decline</button>
                                         </form>
                                         </li>
-                                    <?php
+                                    <?php }
                                 }
                             } else {
                                 ?> <li>No messages!</li> <?php
