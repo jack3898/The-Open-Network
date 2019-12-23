@@ -53,8 +53,6 @@ function checkisfriend(){
     foreach($friends->result as $username){
         if(in_array($currentuser->username, $username)){
             return true;
-        } else{
-            return false;
         }
     }
 }
