@@ -14,4 +14,6 @@ if(isset($_GET['user'])){
         true,
         false
     );
+
+    $friends = new ExistingFriends($profileuser->username);
 }

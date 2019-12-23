@@ -43,6 +43,23 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                     <blockquote><?php echo $profileuser->bio ?></blockquote>
                 </div>
             </div>
+            <div>
+                <div id="friends">
+                    <h2>Friends</h2>
+                    <?php
+                        foreach($friends->result as $username){ ?>
+                            <?php if($username["friends"] != '' && $username["friends"] != $profileuser->username){ ?>
+                                <a href="profile.php?user=<?php echo $username["friends"] ?>" class="friend">
+                                    <?php echo $username["friends"] ?>
+                                </a>
+                            <?php } else if($profileuser->username == $username["friends"]) { ?>
+                                <a href="profile.php?user=<?php echo $username["username"] ?>" class="friend">
+                                    <?php echo $username["username"] ?>
+                                </a>
+                            <?php }
+                        } ?>
+                </div>
+            </div>
         </div>
         <?php if(viewing_own_profile()){
             ?>

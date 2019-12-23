@@ -25,8 +25,6 @@ class User {
      * e = email
      * pp = profile pic url
      * pb = profile banner url
-     * fr = friends
-     * frr = friend requests
      */
     public function __construct($un, $fn, $sn, $b, $e, $pp, $pb){
         $this->username = $un;
