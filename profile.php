@@ -31,11 +31,18 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                     <li>User: <?php echo $profileuser->username ?></li>
                     <li>Email: <a href="mailto: <?php echo $profileuser->email ?>"><?php echo $profileuser->email ?></a></li>
                 </ul>
-                <?php if(!viewing_own_profile()){ ?>
+                <?php
+                
+                if(!viewing_own_profile() && !checkisfriend()){ ?>
                 <form class="plain" id="add_friend">
                     <button>Add <?php echo $profileuser->forename ?> as a friend!</button>
                 </form>
-                <?php } ?>
+                <?php } else if(!viewing_own_profile() && checkisfriend()){
+                ?><form class="plain">
+                    <button>Remove <?php echo $profileuser->forename ?> as a friend :(</button>
+                    <em>Notice: Removing friends is not yet available.</em>
+                </form><?php
+                }?>
             </div>
             <div>
                 <div id="bio">
@@ -52,7 +59,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                                 <a href="profile.php?user=<?php echo $username["friends"] ?>" class="friend">
                                     <?php echo $username["friends"] ?>
                                 </a>
-                            <?php } else if($profileuser->username == $username["friends"]) { ?>
+                            <?php } else if($username["friends"] != '' && $profileuser->username == $username["friends"]) { ?>
                                 <a href="profile.php?user=<?php echo $username["username"] ?>" class="friend">
                                     <?php echo $username["username"] ?>
                                 </a>

@@ -45,3 +45,16 @@ function viewing_own_profile(){
         return false;
     }
 }
+
+function checkisfriend(){
+    global $friends;
+    global $currentuser;
+    
+    foreach($friends->result as $username){
+        if(in_array($currentuser->username, $username)){
+            return true;
+        } else{
+            return false;
+        }
+    }
+}
