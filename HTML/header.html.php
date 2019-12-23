@@ -1,5 +1,10 @@
-<header>
-    <h1><?php echo GetWebsiteInfo::$title ?></h1>
+<header><?php
+    if(isset($currentuser)){
+        ?><h1>Hey, <?php echo $currentuser->forename ?></h1><?php
+    } else {
+        ?><h1><?php echo GetWebsiteInfo::$title ?></h1><?php   
+    }?>
+    
     <nav>
         <ul>
         <?php if(isset($currentuser->loggedin)){ ?>
@@ -18,7 +23,7 @@
                                 foreach($pending_friends as $notification){
                                     if($notification != $currentuser->username){?>
                                         <li>
-                                        <form action="userrequestmgr.php" method="POST">
+                                        <form action="userrequestmgr.php?type=notification" method="POST">
                                             <a href="profile.php?user=<?php echo $notification ?>"><?php echo $notification ?></a> wants to add you as a friend!<br>
                                             <!-- Put form code here to accept or decline friend request. -->
                                             <button class="friend-accept" name="friend_action" value="true,<?php echo $notification ?>">Accept</button>

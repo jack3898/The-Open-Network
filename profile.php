@@ -3,7 +3,10 @@
 include_once 'HTML/head.html.php';
 
 if(empty($_SESSION['logged_in'])){
-    header('Location: '.'login.php');
+    header('Location: login.php');
+} else if(!isset($_GET['user'])){
+    header('Location: profile.php?user=' . $currentuser->username);
+    // If user navigates to profile.php without a GET value. Defaults to logged in user profile.
 } else {
 
 include_once 'HTML/header.html.php';
@@ -34,13 +37,19 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                 <?php
                 
                 if(!viewing_own_profile() && !checkisfriend()){ ?>
-                <form class="plain" id="add_friend">
-                    <button>Add <?php echo $profileuser->forename ?> as a friend!</button>
+                <form class="plain" id="add_friend" action="userrequestmgr.php?type=alterfriend" method="POST">
+                    <?php
+                        $_SESSION['pre-friendstatuschange'] = $profileuser->username;
+                        $_SESSION['pre-friendstatuschangecurrent'] = $currentuser->username;
+                    ?>
+                    <button type="submit" name="addfriend">Add <?php echo $profileuser->forename ?> as a friend!</button>
                 </form>
                 <?php } else if(!viewing_own_profile() && checkisfriend()){
-                ?><form class="plain">
-                    <button>Remove <?php echo $profileuser->forename ?> as a friend :(</button>
-                    <em>Notice: Removing friends is not yet available.</em>
+                ?><form class="plain" id="remove_friend" action="userrequestmgr.php?type=alterfriend" method="POST">
+                    <?php
+                        $_SESSION['pre-friendstatuschange'] = $profileuser->username;
+                    ?>
+                    <button type="submit" name="removefriend">Remove <?php echo $profileuser->forename ?> as a friend :(</button>
                 </form><?php
                 }?>
             </div>

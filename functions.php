@@ -35,6 +35,7 @@ if(isset($currentuser)){
 $css = new GetWebsiteInfo('css', 'style');
 $js = new GetWebsiteInfo('js', 'scripts');
 
+// Detect if the user is viewing their own profile. Returns true if so.
 function viewing_own_profile(){
     global $currentuser;
     global $profileuser;
@@ -46,6 +47,11 @@ function viewing_own_profile(){
     }
 }
 
+/* The friend system is odd, in that it will show the pending friend notifications to both parties.
+* This is due to how the tables in the DB work and the query that references those tables.
+* For example, the person who sent the request will also see it.
+* This will detect if the sender will see their own notification and the rest is up to you.
+*/
 function checkisfriend(){
     global $friends;
     global $currentuser;
@@ -53,6 +59,7 @@ function checkisfriend(){
     foreach($friends->result as $username){
         if(in_array($currentuser->username, $username)){
             return true;
+        break;
         }
     }
 }
