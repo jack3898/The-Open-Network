@@ -2,7 +2,7 @@
 
 class RemoveFriend extends dbconn{
     function __construct($un){
-        $sql = "DELETE FROM `existingfriends` WHERE `existingfriends`.`username` OR `existingfriends`.`friends` = '$un'";
+        $sql = "DELETE FROM `existingfriends` WHERE `existingfriends`.`username` = '$un' OR `existingfriends`.`friends` = '$un'";
         
         $conn = $this->connect();
 

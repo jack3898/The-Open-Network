@@ -63,3 +63,19 @@ function checkisfriend(){
         }
     }
 }
+
+// Checks if the logged in user is viewing a profile which they have sent a friend request to
+function checkispending(){
+    global $pending_friends_full;
+    global $profileuser;
+    global $currentuser;
+    
+    foreach($pending_friends_full as $pendingusername){
+        if(!viewing_own_profile()){
+            if($profileuser->username == $pendingusername['username'] || $pendingusername['pendingfriend']){
+                return true;
+            }
+        }
+    break;
+    }
+}

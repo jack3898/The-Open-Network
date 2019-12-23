@@ -36,7 +36,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                 </ul>
                 <?php
                 
-                if(!viewing_own_profile() && !checkisfriend()){ ?>
+                if(!viewing_own_profile() && !checkisfriend() && !checkispending()){ ?>
                 <form class="plain" id="add_friend" action="userrequestmgr.php?type=alterfriend" method="POST">
                     <?php
                         $_SESSION['pre-friendstatuschange'] = $profileuser->username;
@@ -51,7 +51,9 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                     ?>
                     <button type="submit" name="removefriend">Remove <?php echo $profileuser->forename ?> as a friend :(</button>
                 </form><?php
-                }?>
+                } else if(checkispending()){
+                  ?><form class="plain"><button style="cursor: default; pointer-events: none">Friend request pending...</button></form><?php  
+                } ?>
             </div>
             <div>
                 <div id="bio">
