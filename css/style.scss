@@ -276,3 +276,14 @@ Profile styles
             }
     }
 }
+
+#friends{
+    .friend{
+        background-color: $pure-light;
+        padding: .5rem .7rem;
+        color: $pure-dark;
+        border-radius: 999px;
+        margin: 5px;
+        text-decoration: none;
+    }
+}

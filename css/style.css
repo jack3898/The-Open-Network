@@ -318,4 +318,13 @@ Profile styles
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 150%;
 }
+
+#friends .friend {
+  background-color: white;
+  padding: .5rem .7rem;
+  color: black;
+  border-radius: 999px;
+  margin: 5px;
+  text-decoration: none;
+}
 /*# sourceMappingURL=style.css.map */
