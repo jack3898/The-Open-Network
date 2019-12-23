@@ -36,6 +36,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                 </ul>
                 <?php
                 
+                // Add, delete, pending friend button on the users profile
                 if(!viewing_own_profile() && !checkisfriend() && !checkispending()){ ?>
                 <form class="plain" id="add_friend" action="userrequestmgr.php?type=alterfriend" method="POST">
                     <?php
@@ -55,6 +56,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                   ?><form class="plain"><button style="cursor: default; pointer-events: none">Friend request pending...</button></form><?php  
                 } ?>
             </div>
+
             <div>
                 <div id="bio">
                     <h2>Bio</h2>
@@ -65,6 +67,8 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                 <div id="friends">
                     <h2>Friends</h2>
                     <?php
+
+                        // List the users friends, if the user has some!
                         foreach($friends->result as $username){ ?>
                             <?php if($username["friends"] != '' && $username["friends"] != $profileuser->username){ ?>
                                 <a href="profile.php?user=<?php echo $username["friends"] ?>" class="friend">
@@ -75,7 +79,16 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                                     <?php echo $username["username"] ?>
                                 </a>
                             <?php }
-                        } ?>
+                        }
+                        
+                        // Check is the user has any friends. If not, echo a message!
+                        if(!$friends->result && !viewing_own_profile()){
+                            // No friends message if the profile with no friends is not viewing themself.
+                            ?><p>It seems <?php echo $profileuser->forename ?> hasn't added anyone yet!</p><?php
+                        } else if(!$friends->result && viewing_own_profile()){
+                            // No friends message if the user with no friends is viewing their own profile.
+                            ?><p>Add some friends, and see them appear here!</p><?php
+                        }?>
                 </div>
             </div>
         </div>
