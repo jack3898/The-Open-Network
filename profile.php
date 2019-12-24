@@ -26,7 +26,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
             ?>">
         <img id="profile-picture" src="<?php
             if($profileuser->profilepicurl){
-                echo 'uploads/profilebanners/' . $profileuser->profilepicurl;
+                echo 'uploads/profilepics/' . $profileuser->profilepicurl;
             } else {
                 echo 'resources/profilepicplaceholder.php';
             }

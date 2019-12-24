@@ -33,6 +33,13 @@ body{
     min-height: 100vh;
 }
 
+.popup{
+    border: 3px solid $green;
+    margin: 1rem 0;
+    width: 100%;
+    padding: 1rem;
+}
+
 header{
     h1,
     h2,
@@ -179,6 +186,16 @@ main{
                 content: ':';
             }
         }
+    }
+}
+
+#login{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    #existing-user, #new-user{
+        margin: 0 3rem;
     }
 }
 
