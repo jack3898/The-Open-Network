@@ -1,10 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<?php
+
+header('Content-type: image/svg+xml');
+
+if(isset($_GET['colour'])){
+    $colour = $_GET['colour'];
+} else if(isset($_GET['colourhex'])) {
+    $colour = '#' . $_GET['colourhex'];
+} else {
+    $colour = '#fff';
+}
+
+echo('
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1200 400" style="enable-background:new 0 0 1200 400;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#1A1A1A;}
-	.st1{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:' . $colour . ';stroke-width:3;stroke-miterlimit:10;}
 </style>
 <g>
 	<rect x="0" class="st0" width="1200" height="400"/>
@@ -22,3 +33,4 @@
 	c-1.78-0.48-3.64-0.75-5.56-0.75c-11.87,0-21.5,9.63-21.5,21.5c0,11.87,9.63,21.5,21.5,21.5c5.86,0,23.63,0,29.22,0
 	c10.77,0,47.35,0,59.5,0s22-10.07,22-22.5C491.72,64.57,481.87,54.5,469.72,54.5z"/>
 </svg>
+');

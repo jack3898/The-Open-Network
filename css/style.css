@@ -327,4 +327,21 @@ Profile styles
   margin: 5px;
   text-decoration: none;
 }
+
+@media (max-width: 800px) {
+  main {
+    margin-bottom: calc(350px / 2);
+  }
+  #profile-container {
+    display: block;
+  }
+  #customize-profile {
+    display: block;
+    width: 100%;
+  }
+  #customize-profile form {
+    display: block;
+    max-width: 100%;
+  }
+}
 /*# sourceMappingURL=style.css.map */

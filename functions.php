@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * This functions file contains a lot of the crucial variables and functions the site uses across all pages.
+ * Things like the logged in user, the details of the profile the user it viewing and so forth and some
+ * check functions that return true to help with code speed (i.e. is the user viewing their own profile).
+ * All shortcut functions and variables that should be used across the site should be stored here preferably.
+ */
+
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
@@ -52,7 +60,7 @@ function viewing_own_profile(){
 * For example, the person who sent the request will also see it.
 * This will detect if the sender will see their own notification and the rest is up to you.
 */
-function checkisfriend(){
+function check_is_friend(){
     global $friends;
     global $currentuser;
     
@@ -64,8 +72,8 @@ function checkisfriend(){
     }
 }
 
-// Checks if the logged in user is viewing a profile which they have sent a friend request to
-function checkispending(){
+// Checks if the logged in user is viewing a profile which they have sent a friend request to. Returns true if so.
+function check_is_pending(){
     global $pending_friends_full;
     global $profileuser;
     global $currentuser;

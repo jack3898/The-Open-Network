@@ -10,7 +10,7 @@ include_once 'HTML/head.html.php';
 
 if(isset($_POST['submit'])){
     if(isset($_FILES['file']['name'])){
-        UploadScript::initiateUpload(
+        $initiateupload = new UploadScript(
             'file', // Submit button name in the form
             $currentuser->username, // Passing in a variable which contains the logged in user details
             'uploads/profilepics/', // Directory to store the uploaded file
@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
         );
     }
     if(isset($_FILES['file_banner']['name'])){
-        UploadScript::initiateUpload(
+        $initiateupload = new UploadScript(
             'file_banner', // Submit button name in the form
             $currentuser->username, // Passing in a variable which contains the logged in user details
             'uploads/profilebanners/', // Directory to store the uploaded file

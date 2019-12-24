@@ -21,10 +21,16 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
             if($profileuser->profilebannerurl){
                 echo 'uploads/profilebanners/' . $profileuser->profilebannerurl;
             } else {
-                echo 'resources/bannerpicokaceholder.svg';
+                echo 'resources/bannerpicplaceholder.php';
             }
             ?>">
-        <img id="profile-picture" src="<?php echo 'uploads/profilepics/' . $profileuser->profilepicurl ?>">
+        <img id="profile-picture" src="<?php
+            if($profileuser->profilepicurl){
+                echo 'uploads/profilebanners/' . $profileuser->profilepicurl;
+            } else {
+                echo 'resources/profilepicplaceholder.php';
+            }
+            ?>">
         <h1 style="text-align: center"><?php echo $profileuser->forename . ' ' . $profileuser->surname ?></h1>
         <div id="profile-container">
             <div>
@@ -37,7 +43,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                 <?php
                 
                 // Add, delete, pending friend button on the users profile
-                if(!viewing_own_profile() && !checkisfriend() && !checkispending()){ ?>
+                if(!viewing_own_profile() && !check_is_friend() && !check_is_pending()){ ?>
                 <form class="plain" id="add_friend" action="userrequestmgr.php?type=alterfriend" method="POST">
                     <?php
                         $_SESSION['pre-friendstatuschange'] = $profileuser->username;
@@ -45,14 +51,14 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                     ?>
                     <button type="submit" name="addfriend">Add <?php echo $profileuser->forename ?> as a friend!</button>
                 </form>
-                <?php } else if(!viewing_own_profile() && checkisfriend()){
+                <?php } else if(!viewing_own_profile() && check_is_friend()){
                 ?><form class="plain" id="remove_friend" action="userrequestmgr.php?type=alterfriend" method="POST">
                     <?php
                         $_SESSION['pre-friendstatuschange'] = $profileuser->username;
                     ?>
                     <button type="submit" name="removefriend">Remove <?php echo $profileuser->forename ?> as a friend :(</button>
                 </form><?php
-                } else if(checkispending()){
+                } else if(check_is_pending()){
                   ?><form class="plain"><button style="cursor: default; pointer-events: none">Friend request pending...</button></form><?php  
                 } ?>
             </div>

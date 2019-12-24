@@ -5,6 +5,8 @@ $light: #eeeeff;
 $pure-light: white;
 $pure-dark: black;
 
+$profilepic-offset: 350px;
+
 *{
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -222,7 +224,7 @@ Profile styles
     border-radius: 9999px;
     position: absolute;
     left: calc(50% - 100px);
-    top: 350px;
+    top: $profilepic-offset;
     border: 3px solid $pure-light;
     background-image: url('../resources/profilepicplaceholder.svg');
 }
@@ -285,5 +287,24 @@ Profile styles
         border-radius: 999px;
         margin: 5px;
         text-decoration: none;
+    }
+}
+
+// Mobile styles
+@media(max-width: 800px){
+    main{
+        margin-bottom: calc(#{$profilepic-offset} / 2); // Causes footer to merge with contents.
+    }
+    #profile-container{
+        display: block;
+    }
+    #customize-profile{
+        display: block;
+        width: 100%;
+
+        form{
+            display: block;
+            max-width: 100%;
+        }
     }
 }
