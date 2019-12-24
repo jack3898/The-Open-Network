@@ -13,6 +13,11 @@ if(isset($_GET['success'])){
         <span class="popup"><h3 style="display: inline">Success!</h3> You can now log in as <?php echo $_GET['success']; ?>! As a quick excercise, try and log in with your new password.</span>
     <?php
 }
+if(isset($_GET['error'])){
+    ?>
+        <span class="popup-error"><h3 style="display: inline">Error!</h3> We couldn't create the account! Message: <?php echo $_GET['error']; ?></span>
+    <?php
+}
 ?>
 
 <div id="existing-user">
