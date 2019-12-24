@@ -169,7 +169,7 @@ main form:not(.plain)::after {
   width: 45px;
 }
 
-main form input, main form button {
+main input, main button {
   margin: .5rem 0;
   padding: .5rem;
   border: 0;
@@ -179,25 +179,30 @@ main form input, main form button {
   cursor: pointer;
 }
 
-main form input[type="submit"], main form button[type="submit"] {
+main input[type="submit"], main button[type="submit"] {
   cursor: pointer;
   min-width: 70px;
   margin-top: 3rem;
 }
 
-main form [type="file"] {
+main [type="file"] {
   background-color: transparent;
   color: white;
   background-color: transparent;
 }
 
-main form label {
+main label {
   display: block;
   margin-top: 1rem;
 }
 
-main form label::after {
+main label::after {
   content: ':';
+}
+
+main textarea {
+  width: 100%;
+  color: black;
 }
 
 #login {

@@ -164,36 +164,39 @@ main{
                 width: 45px;
             }
         }
+    }
+    input, button{
+        margin: .5rem 0;
+        padding: .5rem;
+        border: 0;
 
-        input, button{
-            margin: .5rem 0;
-            padding: .5rem;
-            border: 0;
+        display: block;
 
-            display: block;
+        background-color: $pure-light;
+        color: black;
 
-            background-color: $pure-light;
-            color: black;
-
+        cursor: pointer;
+        &[type="submit"]{
             cursor: pointer;
-            &[type="submit"]{
-                cursor: pointer;
-                min-width: 70px;
-                margin-top: 3rem;
-            }
+            min-width: 70px;
+            margin-top: 3rem;
         }
-        [type="file"]{
-            background-color: transparent;
-            color: white;
-            background-color: transparent;
+    }
+    [type="file"]{
+        background-color: transparent;
+        color: white;
+        background-color: transparent;
+    }
+    label{
+        display: block;
+        margin-top: 1rem;
+        &::after{
+            content: ':';
         }
-        label{
-            display: block;
-            margin-top: 1rem;
-            &::after{
-                content: ':';
-            }
-        }
+    }
+    textarea{
+        width: 100%;
+        color: black;
     }
 }
 

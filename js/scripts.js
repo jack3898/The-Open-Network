@@ -27,28 +27,50 @@ let notificationsBox = get('id', 'notifications-box');
 let acceptFrnd = get('queryAll', '.friend-accept');
 let declineFrnd = get('queryAll', '.friend-decline');
 
-// Profile button element
-if(get('id', 'add_friend') !== null){
-    const addFriend = get('id', 'add_friend'); // Add [user] as a friend btn on profiles
+// Edit bio button
+let bio = get('id', 'bio');
+let editBio = get('id', 'edit-bio');
 
-    // addFriend.addEventListener('click', function(e) {
-    //     // Get logged in user details
-    //     xhr = new XMLHttpRequest();
-
-    //     xhr.open('GET', 'api.php?user=currentuser');
-    // });
-}
-
-let toggle = false;
+let toggleNotif = false;
+let toggleEditBio = false;
 
 
 // Popup behaviour
 bell.addEventListener('click', () => {
-    if(!toggle){
+    if(!toggleNotif){
         notificationsBox.style.display = 'block';
-    } else if(toggle) {
+    } else if(toggleNotif) {
         notificationsBox.style.display = 'none';
     }
 
-    toggle = !toggle;
+    toggleNotif = !toggleNotif;
 });
+
+// When user clicks 'Edit' to edit their bio
+editBio.addEventListener('click', () => {
+    if(!toggleEditBio){
+        let html;
+
+        xhr = new XMLHttpRequest;
+
+        xhr.open('GET', 'HTML/components/editbio.php', true);
+
+        xhr.onload = function(){
+            html = this.responseText;
+
+            bio.insertAdjacentHTML('beforeend', html);
+        }
+
+        xhr.send();
+
+        editBio.innerHTML = 'Cancel';
+    } else if(toggleEditBio){
+        const bioEditForm = get('id', 'bio-edit-form');
+
+        bioEditForm.remove();
+
+        editBio.innerHTML = 'Edit';
+    }
+
+    toggleEditBio = !toggleEditBio;
+})

@@ -67,6 +67,13 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
                 <div id="bio">
                     <h2>Bio</h2>
                     <blockquote><?php echo $profileuser->bio ?></blockquote>
+                    <?php
+                        if(viewing_own_profile()){
+                            ?>
+                                <button id="edit-bio">Edit</button>
+                            <?php
+                        }
+                    ?>
                 </div>
             </div>
             <div>
