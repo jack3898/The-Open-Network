@@ -38,8 +38,7 @@ class Auth extends dbconn{
                         die;
                     } else {
                         $error = 'Unable to log in. Try again.';
-                        echo $result['password'];
-                        // header('Location: login.php?error=' . $error);
+                        header('Location: login.php?error=' . $error);
                         die;
                     } 
                 }
