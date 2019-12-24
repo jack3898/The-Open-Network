@@ -3,7 +3,7 @@ class Auth extends dbconn{
     function __construct($un, $pw, $fn = null, $sn = null, $mail = null, $method){
         if($method === 'login'){
             // Query template
-            $sql = "SELECT * FROM users WHERE username=? AND password=?;";
+            $sql = "SELECT * FROM users WHERE username=? LIMIT 1;";
             // $sql_getpendingrequests = "SELECT users.username, users.forename, users.surname, pendingfriends.pendingfriend FROM pendingfriends JOIN users ON users.? = pendingfriends.username;";
             //SELECT users.username, users.forename, users.surname, pendingfriends.pendingfriend FROM pendingfriends JOIN users ON users.username = pendingfriends.username 
 
@@ -18,8 +18,11 @@ class Auth extends dbconn{
                 // If failed to prapare the initialised statement
                 echo 'Error with SQL statement.';
             } else {
+
+                $password_verify = password_verify($pw, PASSWORD_DEFAULT);
+
                 // Bind the question mark in the statement template to 'ss' (string, string)
-                mysqli_stmt_bind_param($stmt, 'ss', $un, $pw);
+                mysqli_stmt_bind_param($stmt, 's', $un);
 
                 // Get the prepared statement and execute the query
                 mysqli_stmt_execute($stmt);
@@ -29,11 +32,16 @@ class Auth extends dbconn{
 
                 if(mysqli_num_rows($data) > 0){
                     $result = mysqli_fetch_assoc($data);
-                    $_SESSION['logged_in'] = $result;
-                    header('Location: index.php');
-                } else {
-                    echo 'Unable to log in m80. Did you fill in all of the fields correctly?<br>';
-                    echo '<a href="index.php">Go back</a>';
+                    if(password_verify($pw, $result['password'])){
+                        $_SESSION['logged_in'] = $result;
+                        header('Location: index.php');
+                        die;
+                    } else {
+                        $error = 'Unable to log in. Try again.';
+                        echo $result['password'];
+                        // header('Location: login.php?error=' . $error);
+                        die;
+                    } 
                 }
             }
         } else if ($method === 'create'){
@@ -84,13 +92,15 @@ class Auth extends dbconn{
             // initialise the prepared statement (make it known to the DB)
             $stmt = mysqli_stmt_init($conn);
 
+            $password_hash = password_hash($pw, PASSWORD_DEFAULT);
+
             // Prepare the initialised statement for execution
             if(!mysqli_stmt_prepare($stmt, $sql) && mysqli_stmt_prepare($stmt_pendingfriends)){
                 // If failed to prapare the initialised statement
                 echo 'Error with SQL statement.';
             } else {
                 // Bind the question mark in the statement template to 'ss' (string, string)
-                mysqli_stmt_bind_param($stmt, 'sssss', $fn, $sn, $un, $pw, $mail);
+                mysqli_stmt_bind_param($stmt, 'sssss', $fn, $sn, $un, $password_hash, $mail);
 
                 // Get the prepared statement and execute the query
                 if(!mysqli_stmt_execute($stmt)){

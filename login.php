@@ -15,7 +15,7 @@ if(isset($_GET['success'])){
 }
 if(isset($_GET['error'])){
     ?>
-        <span class="popup-error"><h3 style="display: inline">Error!</h3> We couldn't create the account! Message: <?php echo $_GET['error']; ?></span>
+        <span class="popup-error"><h3 style="display: inline">Error!</h3> There was an issue! Message: <?php echo $_GET['error']; ?></span>
     <?php
 }
 ?>
