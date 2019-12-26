@@ -74,7 +74,7 @@ class Auth extends dbconn{
             }
 
             // Check if the email format is correct
-            if(!filter_var($mail, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/")){
+            if(!filter_var($mail, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $mail)){
                 $error = 'Email provided is in an incorrect format!';
                 header('Location: login.php?error=' . $error);
                 die;

@@ -289,6 +289,8 @@ Profile styles
 #profile-container #bio {
   border: 3px solid #8ac926;
   padding: 1rem;
+  max-width: 400px;
+  overflow: hidden;
 }
 
 #profile-container #bio h2 {
