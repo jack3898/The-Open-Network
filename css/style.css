@@ -117,6 +117,10 @@ header #notifications .fas {
   cursor: pointer;
 }
 
+header #notifications #bell {
+  scale: 175%;
+}
+
 header::before {
   content: '';
   width: 100%;
@@ -203,6 +207,14 @@ main label::after {
 main textarea {
   width: 100%;
   color: black;
+}
+
+main .post .profile-picture-post {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 999px;
 }
 
 #login {

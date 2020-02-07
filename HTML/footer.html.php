@@ -3,6 +3,7 @@
         <section>
             <h3>About <?php echo GetWebsiteInfo::$title ?></h3>
             <p>This website is a result of taking all of my experience with PHP, MySQL, JavaScript, HTML and CSS (SASS) and challenging myself to create something cool.</p>
+            <p>No PHP frameworks were used as I want to learn PHP first.</p>
             <p>This site is also hosted on my Raspberry Pi at home.</p>
         </section>
         <section>

@@ -6,6 +6,7 @@
  * User information template
  */
 class User {
+    public $id;
     public $username;
     public $forename;
     public $surname;

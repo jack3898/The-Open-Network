@@ -109,6 +109,9 @@ header{
         .fas{
             cursor: pointer;
         }
+        #bell{
+            scale: 175%;
+        }
     }
 
     &::before{
@@ -197,6 +200,14 @@ main{
     textarea{
         width: 100%;
         color: black;
+    }
+    .post{
+        .profile-picture-post{
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 999px;
+        }
     }
 }
 

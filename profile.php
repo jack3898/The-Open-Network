@@ -19,24 +19,24 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
     <main>
         <img id="profile-banner" src="<?php
             if($profileuser->profilebannerurl){
-                echo 'uploads/profilebanners/' . $profileuser->profilebannerurl;
+                echo "uploads/profilebanners/{$profileuser->profilebannerurl}";
             } else {
                 echo 'resources/bannerpicplaceholder.php';
             }
             ?>">
         <img id="profile-picture" src="<?php
             if($profileuser->profilepicurl){
-                echo 'uploads/profilepics/' . $profileuser->profilepicurl;
+                echo "uploads/profilepics/{$profileuser->profilepicurl}";
             } else {
-                echo 'resources/profilepicplaceholder.php';
+                echo "resources/profilepicplaceholder.php";
             }
             ?>">
-        <h1 style="text-align: center"><?php echo $profileuser->forename . ' ' . $profileuser->surname ?></h1>
+        <h1 style="text-align: center"><?php echo "{$profileuser->forename} {$profileuser->surname}" ?></h1>
         <div id="profile-container">
             <div>
-                <h2>About <?php echo $profileuser->forename . ' ' . $profileuser->surname ?></h2>
+                <h2>About <?php echo "{$profileuser->forename} {$profileuser->surname}" ?></h2>
                 <ul id="profile" class="list-style-1">
-                    <li>Name: <?php echo $profileuser->forename . ' ' . $profileuser->surname ?></li>
+                    <li>Name: <?php echo "{$profileuser->forename} {$profileuser->surname}" ?></li>
                     <li>User: <?php echo $profileuser->username ?></li>
                     <li>Email: <a href="mailto: <?php echo $profileuser->email ?>"><?php echo $profileuser->email ?></a></li>
                 </ul>
@@ -79,29 +79,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
             <div>
                 <div id="friends">
                     <h2>Friends</h2>
-                    <?php
-
-                        // List the users friends, if the user has some!
-                        foreach($friends->result as $username){ ?>
-                            <?php if($username["friends"] != '' && $username["friends"] != $profileuser->username){ ?>
-                                <a href="profile.php?user=<?php echo $username["friends"] ?>" class="friend">
-                                    <?php echo $username["friends"] ?>
-                                </a>
-                            <?php } else if($username["friends"] != '' && $profileuser->username == $username["friends"]) { ?>
-                                <a href="profile.php?user=<?php echo $username["username"] ?>" class="friend">
-                                    <?php echo $username["username"] ?>
-                                </a>
-                            <?php }
-                        }
-                        
-                        // Check is the user has any friends. If not, echo a message!
-                        if(!$friends->result && !viewing_own_profile()){
-                            // No friends message if the profile with no friends is not viewing themself.
-                            ?><p>It seems <?php echo $profileuser->forename ?> hasn't added anyone yet!</p><?php
-                        } else if(!$friends->result && viewing_own_profile()){
-                            // No friends message if the user with no friends is viewing their own profile.
-                            ?><p>Add some friends, and see them appear here!</p><?php
-                        }?>
+                    <?php get_friends(true); ?>
                 </div>
             </div>
         </div>
