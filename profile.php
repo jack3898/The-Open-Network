@@ -79,7 +79,7 @@ include_once 'reusable/getprofileuser.php'; // Get details of the user's profile
             <div>
                 <div id="friends">
                     <h2>Friends</h2>
-                    <?php get_friends(true); ?>
+                    <?php get_friends(true, true) // On profile = true, stylised = true ?>
                 </div>
             </div>
         </div>

@@ -1,0 +1,3 @@
+SELECT username FROM `existingfriends` WHERE friends = 'jinbob123'
+UNION
+SELECT friends FROM `existingfriends` WHERE username = 'jinbob123'

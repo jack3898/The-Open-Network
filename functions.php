@@ -84,41 +84,76 @@ function check_is_pending(){
     }
 }
 
-// Returns all of the friends of the users profile. By default it will return an array, but you can enable a stylised version with HTML.
-function get_friends($stylised = false){
+function get_friends($profile = false, $stylised = true){
     global $friends, $username, $profileuser;
 
-    if($stylised){
-            // List the users friends, if the user has some!
-        foreach($friends->result as $username){ ?>
-            <?php if($username["friends"] != '' && $username["friends"] != $profileuser->username){ ?>
-                <a href="profile.php?user=<?php echo $username["friends"] ?>" class="friend">
-                    <?php echo $username["friends"] ?>
-                </a>
-            <?php } else if($username["friends"] != '' && $profileuser->username == $username["friends"]) { ?>
-                <a href="profile.php?user=<?php echo $username["username"] ?>" class="friend">
-                    <?php echo $username["username"] ?>
-                </a>
-            <?php }
-        }
-        
-        // Check is the user has any friends. If not, echo a message!
-        if(!$friends->result && !viewing_own_profile()){
-            // No friends message if the profile with no friends is not viewing themself.
-            ?><p>It seems <?php echo $profileuser->forename ?> hasn't added anyone yet!</p><?php
-        } else if(!$friends->result && viewing_own_profile()){
-            // No friends message if the user with no friends is viewing their own profile.
-            ?><p>Add some friends, and see them appear here!</p><?php
-        }
-    } else {
-        $result = array();
-        foreach($friends->result as $username){
-            if($username["friends"] != '' && $username["friends"] != $profileuser->username){
-                array_push($result, $username["friends"]);
-            } else if($username["friends"] != '' && $profileuser->username == $username["friends"]) {
-                array_push($result, $username["username"]);
+    if($profile = true){
+        if($stylised){
+                // List the users friends, if the user has some!
+            foreach($friends->result as $username){ ?>
+                <?php if($username["friends"] != '' && $username["friends"] != $profileuser->username){ ?>
+                    <a href="profile.php?user=<?php echo $username["friends"] ?>" class="friend">
+                        <?php echo $username["friends"] ?>
+                    </a>
+                <?php } else if($username["friends"] != '' && $profileuser->username == $username["friends"]) { ?>
+                    <a href="profile.php?user=<?php echo $username["username"] ?>" class="friend">
+                        <?php echo $username["username"] ?>
+                    </a>
+                <?php }
             }
+            
+            // Check is the user has any friends. If not, echo a message!
+            if(!$friends->result && !viewing_own_profile()){
+                // No friends message if the profile with no friends is not viewing themself.
+                ?><p>It seems <?php echo $profileuser->forename ?> hasn't added anyone yet!</p><?php
+            } else if(!$friends->result && viewing_own_profile()){
+                // No friends message if the user with no friends is viewing their own profile.
+                ?><p>Add some friends, and see them appear here!</p><?php
+            }
+        } else {
+            $result = array();
+            foreach($friends->result as $username){
+                if($username["friends"] != '' && $username["friends"] != $profileuser->username){
+                    array_push($result, $username["friends"]);
+                } else if($username["friends"] != '' && $profileuser->username == $username["friends"]) {
+                    array_push($result, $username["username"]);
+                }
+            }
+            return $result;
         }
-        return $result;
+    } else if($profile = false) {
+            if($stylised){
+                // List the users friends, if the user has some!
+            foreach($friends->result as $username){ ?>
+                <?php if($username["friends"] != '' && $username["friends"] != $currentuser->username){ ?>
+                    <a href="profile.php?user=<?php echo $username["friends"] ?>" class="friend">
+                        <?php echo $username["friends"] ?>
+                    </a>
+                <?php } else if($username["friends"] != '' && $currentuser->username == $username["friends"]) { ?>
+                    <a href="profile.php?user=<?php echo $username["username"] ?>" class="friend">
+                        <?php echo $username["username"] ?>
+                    </a>
+                <?php }
+            }
+            
+            // Check is the user has any friends. If not, echo a message!
+            if(!$friends->result && !viewing_own_profile()){
+                // No friends message if the profile with no friends is not viewing themself.
+                ?><p>It seems <?php echo $currentuser->forename ?> hasn't added anyone yet!</p><?php
+            } else if(!$friends->result && viewing_own_profile()){
+                // No friends message if the user with no friends is viewing their own profile.
+                ?><p>Add some friends, and see them appear here!</p><?php
+            }
+        } else {
+            $result = array();
+            foreach($friends->result as $username){
+                if($username["friends"] != '' && $username["friends"] != $currentuser->username){
+                    array_push($result, $username["friends"]);
+                } else if($username["friends"] != '' && $currentuser->username == $username["friends"]) {
+                    array_push($result, $username["username"]);
+                }
+            }
+            return $result;
+        }
     }
 }

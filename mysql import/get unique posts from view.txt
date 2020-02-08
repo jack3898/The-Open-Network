@@ -1,0 +1,12 @@
+SELECT * FROM `posts_detail`
+                    INNER JOIN(
+                        SELECT username FROM `existingfriends` WHERE friends = '$username'
+                        UNION
+                        SELECT friends FROM `existingfriends` WHERE username = '$username'
+                    )
+                    AS simple_friends
+                    ON posts_detail.username = '$username'
+                    OR simple_friends.username = posts_detail.username
+                    GROUP BY posts_detail.id
+                    ORDER BY CAST(`posts_detail`.`post_date` AS int)
+                    DESC
